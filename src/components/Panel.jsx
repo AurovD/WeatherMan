@@ -14,6 +14,7 @@ let days = [
 
 let months = ['янв', 'фев', 'мар', 'апр','май', 'июн', 'июл', 'авг','сен', 'окт', 'ноя', 'дек'];
 let values = ["EUR", "USD", "CNY", "UAH"];
+let list= ["евро", "долларов", "юаней", "гривен"];
 
 const Categories = React.memo(function Categories({onClickCategory, activeCategory}) {
     return (
@@ -89,7 +90,7 @@ const Panel = ({timezone, current, currency, banner}) => {
     <div className="panel currancy">
         <Categories activeCategory = {category ? category : 67} onClickCategory={onSelectCategory}/>
         <form action="">
-            <input type="number" id="num_count" name="quantity" placeholder="1 руб" onChange={e => setNumber(e.target.value)}/>
+            <input type="number" id="num_count" name="quantity" placeholder={`1 ` + list[category.category]} onChange={e => setNumber(e.target.value)}/>
         </form>
         <p>{`Сумма: ${Math.ceil((sum)*100)/100} руб`}</p>
     </div>
