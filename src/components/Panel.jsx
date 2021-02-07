@@ -1,7 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector,} from "react-redux";
 import {setCategory} from "../redux/actions/category";
-var classNames = require('classnames');
 
 let days = [
     'Воскресенье',
@@ -30,7 +29,6 @@ const Categories = React.memo(function Categories({onClickCategory, activeCatego
 
 const Panel = ({timezone, current, currency, banner}) => {
     const dispatch = useDispatch();
-    let time = new Date();
     const category= useSelector(({category}) => category);
     const [number, setNumber] = React.useState(1);
     const [sum, setSum] = React.useState(0);
@@ -40,25 +38,31 @@ const Panel = ({timezone, current, currency, banner}) => {
     }
 
     let getMin = () => {
-        let min = time.getMinutes();
-        console.log(min);
-        if(time.getMinutes() < 10) {
+        let min = new Date().getMinutes();
+        if(min < 10) {
             return "0" + min;
         } else {
             return min;
         }
     }
-    let getTime = () => {
-        let string = `${time.getHours()}:${getMin()} - ${days[time.getDay()]}, ${time.getDate()} ${months[time.getMonth()]} '${time.getFullYear() % 100}`;
+    let getSec = () => {
+        let sec = new Date().getSeconds();
+        if(sec < 10) {
+            return "0" + sec;
+        } else {
+            return sec;
+        }
+    }
+    let getTime = (string) => {
+        string = `${new Date().getHours()}:${getMin()}:${getSec()} - ${days[new Date().getDay()]}, ${new Date().getDate()} ${months[new Date().getMonth()]}'${new Date().getFullYear() % 100}`;
         return string;
     };
 
-    const [text, setText] = React.useState(getTime);
+    const [text, setText] = React.useState(getTime());
 
     React.useEffect(() => {
-        setInterval(() => setText(getTime()), 10000)
-        setInterval(() => console.log(text), 10000)
-    }, [getTime()]);
+        setInterval(() => setText(getTime(text)), 1000)
+    }, [text]);
 
     React.useEffect(() => {
         setSum(curs[category, category.category] * Number(number))

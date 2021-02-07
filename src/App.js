@@ -43,9 +43,9 @@ function App() {
     //     console.log(curData);
     // }
 
-    React.useEffect(() => {
-        dispatch(getWeatherData());
-    }, [dispatch]);
+    // React.useEffect(() => {
+    //     dispatch(getWeatherData());
+    // }, [dispatch]);
     React.useEffect(() => {
         dispatch(getCurrencyData());
     }, [dispatch]);
