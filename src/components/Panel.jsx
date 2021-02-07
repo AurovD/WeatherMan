@@ -84,7 +84,7 @@ const Panel = ({timezone, current, currency, banner}) => {
     <div className="panel currancy">
         <Categories activeCategory = {category ? category : 67} onClickCategory={onSelectCategory}/>
         <form action="">
-            <input type="number" id="num_count" name="quantity" placeholder="1" onChange={e => setNumber(e.target.value)}/>
+            <input type="number" id="num_count" name="quantity" placeholder="1 руб" onChange={e => setNumber(e.target.value)}/>
         </form>
         <p>{`Сумма: ${Math.ceil((sum)*100)/100} руб`}</p>
     </div>
