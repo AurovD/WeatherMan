@@ -36,7 +36,7 @@ function App() {
     const isLoadedCur = useSelector(({currency}) => currency.isLoadedCur);
     const banner = useSelector(({banner}) => banner.banner);
     if(isLoaded) {
-        console.log(weatherData);
+        console.log(weatherData)
         text = weatherData.current.weather[0].icon;
     }
     // if(isLoadedCur) {
@@ -45,14 +45,13 @@ function App() {
 
     React.useEffect(() => {
         dispatch(getWeatherData());
-    }, []);
+    }, [dispatch]);
     React.useEffect(() => {
         dispatch(getCurrencyData());
-    }, []);
+    }, [dispatch]);
 
     let img =  (text) => {
         for (let image in bg) {
-            console.log(text)
             if(image === text) {
                 return bg[image]
             }
