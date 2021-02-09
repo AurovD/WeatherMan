@@ -64,7 +64,7 @@ function App() {
 
 
     return (
-    <div className="wrapper alpha" style={{backgroundImage: `url("${snow}")`}}>
+    <div className="wrapper alpha" style={{backgroundImage: `url("${img(text)}")`}}>
         <Panel timezone={isLoaded ? weatherData.timezone : null}
                current={isLoaded ? weatherData.current : 0}
                currency={isLoadedCur ? curData.rates : null}
