@@ -92,7 +92,7 @@ const Panel = ({timezone, current, currency, banner}) => {
         <form action="">
             <input type="number" id="num_count" name="quantity" placeholder={`1 ` + list[category.category]} onChange={e => setNumber(e.target.value)}/>
         </form>
-        <p>{`Сумма: ${Math.ceil((sum)*100)/100} руб`}</p>
+        <p>{`${Math.ceil((sum)*100)/100} руб`}</p>
     </div>
     );
 }
